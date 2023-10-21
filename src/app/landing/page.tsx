@@ -1,6 +1,6 @@
 'use client'
+import { Button } from "@/components/ui/button"
 
-import { Button } from '@/components/ui/button'
 
 const Page = () => {
   return (
@@ -9,9 +9,10 @@ const Page = () => {
       <Button>Button</Button>
 
       <p className={''}>
-        Find in-depth information about Next.js features and API.
-      </p>
+            Find in-depth information about Next.js features and API.
+        </p>
     </div>
+
   )
 }
 
