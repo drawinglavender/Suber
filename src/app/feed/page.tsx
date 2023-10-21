@@ -1,5 +1,7 @@
 'use client'
 
+import FeedCard from '@/app/components/FeedCard'
+
 const Page = () => {
   return (
     <div>
