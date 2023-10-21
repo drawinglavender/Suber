@@ -1,18 +1,7 @@
-'use client'
+import React from 'react'
 
-import { Button } from '@/components/ui/button'
-
-const Page = () => {
+export default function page() {
   return (
-    <div>
-      <h1>create</h1>
-      <Button>Button</Button>
-
-      <p className={''}>
-        Find in-depth information about Next.js features and API.
-      </p>
-    </div>
+    <div>page</div>
   )
 }
-
-export default Page
