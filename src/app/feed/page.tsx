@@ -4,7 +4,7 @@ import FeedCard from '@/components/FeedCard'
 
 const Page = () => {
   return (
-    <div>
+    <div className=''>
       <h1>Feed</h1>
     </div>
   )
