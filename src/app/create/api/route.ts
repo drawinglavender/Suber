@@ -13,16 +13,22 @@ export const POST = async (req: Request) => {
   console.log(user)
   // Perform your Route Handler's logic
   try {
-    db.from('listings').insert({
+    const { error } = await db.from('listings').insert({
       userID: userId,
       userName: user?.username,
       userImage: user?.imageUrl,
-      seatsAvailable: body.seatsAvailable,
-      leavingTime: body.leavingTime,
+      seats: body.seats,
+      leaveTime: new Date().getTime() + parseInt(body.leaveTime) * 1000,
       location: body.location
     })
+    if (error) {
+      console.error(error)
+      return new NextResponse("Server Error", { status: 500 })
+    }
+
     return new NextResponse("OK")
   } catch (err) {
+    console.error(err)
     return new NextResponse("Server Error", { status: 500 })
   }
 }

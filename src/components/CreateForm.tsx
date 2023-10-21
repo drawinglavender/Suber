@@ -53,6 +53,17 @@ export default function CreateForm() {
   const [seats, setSeats] = useState(1)
   const [location, setLocation] = useState('')
 
+  const handleSubmit = () => {
+    fetch('/create/api', {
+      method: 'POST',
+      body: JSON.stringify({
+        leaveTime,
+        seats,
+        location
+      })
+    })
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -92,7 +103,7 @@ export default function CreateForm() {
           </div>
           <div className='grid grid-cols-4 items-center gap-4'>
             <Label htmlFor='seats' className='text-right'>
-              Seats Available
+              Seats
             </Label>
             <Input
               id='seats'
@@ -131,7 +142,7 @@ export default function CreateForm() {
         </div>
 
         <DialogFooter>
-          <Button type='submit'>Post</Button>
+          <Button type='submit' onClick={handleSubmit}>Post</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
