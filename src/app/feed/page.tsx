@@ -1,6 +1,6 @@
 'use client'
 
-import FeedCard from '@/app/components/FeedCard'
+import FeedCard from '@/components/FeedCard'
 
 const Page = () => {
   return (
