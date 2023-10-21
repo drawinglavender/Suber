@@ -11,7 +11,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-export function DialogDemo() {
+export default function CreateForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -21,7 +21,7 @@ export function DialogDemo() {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
         <div className='grid gap-4 py-4'>
