@@ -7,6 +7,7 @@ interface Listing {
   seatsAvailable: number
   leavingTime: number
   location: string
+  driverRating: number
 }
 
 export default Listing

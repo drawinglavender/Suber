@@ -14,6 +14,8 @@ const listings: Listing[] = [
     location: 'Burnaby',
     seatsAvailable: 1,
     leavingTime: 123,
+    driverRating: 5,
+    
   }
 ]
 
