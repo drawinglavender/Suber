@@ -5,7 +5,7 @@ import CreateForm from '@/components/CreateForm'
 const Page = () => {
   return (
     <div>
-      <CreateForm/>
+      <CreateForm />
     </div>
   )
 }

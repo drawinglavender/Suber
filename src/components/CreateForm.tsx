@@ -10,6 +10,15 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select'
 
 export default function CreateForm() {
   return (
@@ -19,35 +28,52 @@ export default function CreateForm() {
       </DialogTrigger>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
-          </DialogDescription>
+          <DialogTitle>Create Listing</DialogTitle>
+          <DialogDescription>Create a listing for carpooling</DialogDescription>
         </DialogHeader>
         <div className='grid gap-4 py-4'>
           <div className='grid grid-cols-4 items-center gap-4'>
-            <Label htmlFor='name' className='text-right'>
-              Name
+            <Label htmlFor='location' className='text-right'>
+              Location
             </Label>
             <Input
-              id='name'
-              defaultValue='Pedro Duarte'
+              id='location'
+              defaultValue='Location'
               className='col-span-3'
             />
           </div>
           <div className='grid grid-cols-4 items-center gap-4'>
-            <Label htmlFor='username' className='text-right'>
-              Username
+            <Label htmlFor='seats' className='text-right'>
+              Seats Available
             </Label>
             <Input
-              id='username'
-              defaultValue='@peduarte'
+              id='seats'
+              type='number'
+              defaultValue={1}
               className='col-span-3'
             />
           </div>
+          <div className='grid grid-cols-4 items-center gap-4'>
+          <Label htmlFor='seats' className='text-right'>
+            Leave Time
+            </Label>
+            <Select>
+              <SelectTrigger className='col-span-3'>
+                <SelectValue placeholder='Select a time' />
+              </SelectTrigger>
+              
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Time</SelectLabel>
+                  <SelectItem value='apple'>Apple</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
+
         <DialogFooter>
-          <Button type='submit'>Save changes</Button>
+          <Button type='submit'>Post</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
