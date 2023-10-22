@@ -12,9 +12,11 @@ const Page = () => {
 
   useEffect(() => {
     const getAndSetListings = async () => {
-      const listings = await db.from('listings').select('*')
+      const listings = await db
+        .from('listings')
+        .select('*')
         .gt('leaveTime', new Date().getTime())
-      
+
       if (listings.error) {
         return
       }

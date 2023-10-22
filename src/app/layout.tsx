@@ -7,6 +7,8 @@ import './globals.css'
 
 import { ClerkProvider } from '@clerk/nextjs'
 
+import Header from '@/components/Header'
+
 export const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans'
@@ -26,12 +28,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang='en' suppressHydrationWarning>
         <head />
+
         <body
           className={cn(
             'min-h-screen bg-background font-sans antialiased',
             fontSans.variable
           )}
         >
+          <Header />
           {children}
         </body>
       </html>

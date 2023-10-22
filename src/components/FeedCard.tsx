@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
@@ -10,7 +11,6 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import Listing from '@/types/listing'
-import { useEffect, useState } from 'react'
 
 const FeedCard = ({ listing }: { listing: Listing }) => {
   const [leavingIn, setLeavingIn] = useState<string>('')
@@ -25,8 +25,7 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
 
       const seconds = Math.floor((diff / 1000) % 60)
 
-      if (hours > 0)
-      setLeavingIn(`${hours}h ${minutes}m`)
+      if (hours > 0) setLeavingIn(`${hours}h ${minutes}m`)
 
       setLeavingIn(`${minutes}m ${seconds}s`)
     }, 1000)
@@ -65,7 +64,9 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
           </CardHeader>
 
           <CardContent>
-            <div className='bg-blue-300 rounded-full py-1 px-3 w-fit'>{leavingIn}</div>
+            <div className='bg-blue-300 rounded-full py-1 px-3 w-fit'>
+              {leavingIn}
+            </div>
           </CardContent>
 
           <CardFooter className='flex justify-between'>
