@@ -17,9 +17,8 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
     <div className='flex justify-center mt-8'>
       <Card className='w-[350px]'>
         <CardHeader>
-          <CardTitle><div className='flex justify-between'>{listing.location}<div><Image className='rounded-xl' height={40} src={listing.userImage ?? ''} alt='profilepicture' width={40}></Image></div></div></CardTitle>
+          <CardTitle><div className='flex justify-between'><div>{listing.location}<div className='text-sm font-normal'>{listing.seats} seats available</div></div><div><Image className='rounded-xl' height={40} src={listing.userImage ?? ''} alt='profilepicture' width={40}></Image></div></div></CardTitle>
 
-          <CardDescription>{listing.seats} seats available</CardDescription>
         </CardHeader>
 
         <CardContent></CardContent>
