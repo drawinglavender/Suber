@@ -23,6 +23,7 @@ import Listing from '@/types/listing'
 const FeedCard = ({ listing }: { listing: Listing }) => {
   const [leavingIn, setLeavingIn] = useState<string>('')
   const [rating, _setRating] = useState((Math.random() * 5).toFixed(1))
+  const [expired, setExpired] = useState<boolean>(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,10 +37,14 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
 
       if (hours > 0) setLeavingIn(`${hours}h ${minutes}m`)
 
+      if (seconds < 0) setExpired(true)
+
       setLeavingIn(`${minutes}m ${seconds}s`)
     }, 1000)
     return () => clearInterval(interval)
   }, [listing.leaveTime])
+
+  if (expired) return null
 
   // @ts-ignore
   const displayMapUrl = locationMap[listing.location]
