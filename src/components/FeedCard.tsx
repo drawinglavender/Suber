@@ -21,6 +21,7 @@ import Listing from '@/types/listing'
 
 const FeedCard = ({ listing }: { listing: Listing }) => {
   const [leavingIn, setLeavingIn] = useState<string>('')
+  const [rating, _setRating] = useState((Math.random() * 5).toFixed(1))
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,8 +71,7 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
                         />
                       </TooltipTrigger>
                       <TooltipContent>
-                        {/* Random number to 1 decimal place from 0 to 5 */}
-                        <p>{(Math.random() * 5).toFixed(1)}</p>
+                        <p>{rating} / 5 average rating</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
