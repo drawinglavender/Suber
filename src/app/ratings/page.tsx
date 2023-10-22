@@ -13,7 +13,7 @@ const Page = () => {
 
       <p>How would you like to rate your driver?</p>
 
-      <Slider defaultValue={sliderValue} max={5} step={0.5} />
+      <Slider defaultValue={[sliderValue]} max={5} step={0.5} />
 
       <Button variant='outline'>Submit</Button>
     </div>
