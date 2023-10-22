@@ -36,7 +36,7 @@ const Page = () => {
         setListings((listings) => [payload.new, ...listings])
       }
     )
-  })
+  }, [])
 
   if (listings.length === 0 && !loading) {
     return (
