@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-
+import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -70,8 +70,11 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
           </CardContent>
 
           <CardFooter className='flex justify-between'>
-            <Button variant='outline'>Share</Button>
-            <Button>Reserve</Button>
+            <Button variant='outline' onClick={() => {
+              navigator.clipboard.writeText(`https://suber.vercel.app/listing/${listing.id}`)
+              toast('Link copied!')
+            }}>Share</Button>
+            <Button onClick={() => toast('Reservation confirmed!')}>Reserve</Button>
           </CardFooter>
         </Card>
       </div>

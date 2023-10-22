@@ -9,6 +9,7 @@ import Listing from '@/types/listing'
 
 const Page = () => {
   const [listings, setListings] = useState<Listing[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const getAndSetListings = async () => {
@@ -17,6 +18,7 @@ const Page = () => {
         .select('*')
         .gt('leaveTime', new Date().getTime())
 
+        setLoading(false)
       if (listings.error) {
         return
       }
@@ -36,8 +38,12 @@ const Page = () => {
     )
   })
 
-  if (listings.length === 0) {
-    return <div className=''>No listings</div>
+  if (listings.length === 0 && !loading) {
+    return (<div className='w-full flex justify-center font-bold text-2xl'>No listings available...</div>)
+  }
+
+  if (loading) {
+    return (<div className='w-full flex justify-center font-bold text-2xl'>Loading...</div>)
   }
 
   return (
