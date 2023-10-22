@@ -2,9 +2,10 @@
 
 import {
   SignedIn,
+  SignedOut,
   SignInButton,
   useAuth,
-  UserButton, SignedOut
+  UserButton
 } from '@clerk/nextjs'
 
 import CreateForm from '@/components/CreateForm'
@@ -21,11 +22,11 @@ const Header = () => {
         <SignedIn>
           <CreateForm />
         </SignedIn>
-<SignedOut>
-        <div className='bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90 h-10 px-4 py-2 rounded-md'>
-           <SignInButton />
-        </div>
-</SignedOut>
+        <SignedOut>
+          <div className='bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90 h-10 px-4 py-2 rounded-md'>
+            <SignInButton />
+          </div>
+        </SignedOut>
         <UserButton />
       </div>
     </div>

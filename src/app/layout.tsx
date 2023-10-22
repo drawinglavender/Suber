@@ -4,7 +4,7 @@ import { Inter as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 
 import './globals.css'
-
+import { Toaster } from 'sonner'
 import { ClerkProvider } from '@clerk/nextjs'
 
 import Header from '@/components/Header'
@@ -28,7 +28,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang='en' suppressHydrationWarning>
         <head />
-
+        <Toaster />
         <body
           className={cn(
             'min-h-screen bg-background font-sans antialiased',
