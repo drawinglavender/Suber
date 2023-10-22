@@ -9,6 +9,8 @@ import {
 } from '@clerk/nextjs'
 
 import CreateForm from '@/components/CreateForm'
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 
 const Header = () => {
   const { userId } = useAuth()
@@ -19,6 +21,10 @@ const Header = () => {
         Suber
       </div>
       <div className='flex items-center gap-6'>
+        {/* <div className='flex items-center space-x-2'>
+        <Switch id="dark-mode" />
+      <Label htmlFor="dark-mode">Theme</Label>
+        </div> */}
         <SignedIn>
           <CreateForm />
         </SignedIn>
