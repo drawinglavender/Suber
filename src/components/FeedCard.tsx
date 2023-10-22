@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
+import { locationMap } from '@/components/CreateForm'
 import Listing from '@/types/listing'
 import { useEffect, useState } from 'react'
 
@@ -32,6 +33,9 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
     }, 1000)
     return () => clearInterval(interval)
   }, [listing.leaveTime])
+
+  // @ts-ignore
+  const displayMapUrl = locationMap[listing.location]
 
   return (
     <motion.div
@@ -60,12 +64,23 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
                     width={40}
                   ></Image>
                 </div>
+
               </div>
             </CardTitle>
           </CardHeader>
 
           <CardContent>
             <div className='bg-blue-300 rounded-full py-1 px-3 w-fit'>{leavingIn}</div>
+            {displayMapUrl && (<div className='flex justify-center rounded-md mt-4'>
+              <iframe
+                src={displayMapUrl}
+                width="300"
+                height="375"
+                style={{ border: "0" }}
+                loading="lazy"
+              ></iframe>
+            </div>)}
+
           </CardContent>
 
           <CardFooter className='flex justify-between'>
