@@ -74,7 +74,7 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
               navigator.clipboard.writeText(`https://suber.vercel.app/listing/${listing.id}`)
               toast('Link copied!')
             }}>Share</Button>
-            <Button onClick={() => toast('Reservation confirmed!')}>Reserve</Button>
+            <Button onClick={() => toast.success('Reservation confirmed!')}>Reserve</Button>
           </CardFooter>
         </Card>
       </div>
