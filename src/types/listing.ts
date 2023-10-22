@@ -5,7 +5,7 @@ interface Listing {
   userName: string
   userImage: string | null
   seats: number
-  leavingTime: number
+  leaveTime: number
   location: string
   driverRating: number
 }

@@ -19,7 +19,7 @@ export const POST = async (req: Request) => {
       userName: user?.username,
       userImage: user?.imageUrl,
       seats: body.seats,
-      leaveTime: new Date().getTime() + parseInt(body.leaveTime) * 1000,
+      leaveTime: new Date().getTime() + parseInt(body.leaveTime) * 1000 * 60,
       location: body.location
     })
     if (error) {
