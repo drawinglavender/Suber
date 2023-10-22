@@ -142,7 +142,9 @@ export default function CreateForm() {
         </div>
 
         <DialogFooter>
-          <Button type='submit' onClick={handleSubmit}>Post</Button>
+          <Button type='submit' onClick={handleSubmit}>
+            Post
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

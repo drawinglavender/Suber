@@ -4,7 +4,7 @@ interface Listing {
   userID: string
   userName: string
   userImage: string | null
-  seatsAvailable: number
+  seats: number
   leavingTime: number
   location: string
   driverRating: number

@@ -1,16 +1,17 @@
-import { auth, currentUser } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
+import { auth, currentUser } from '@clerk/nextjs'
+
 import db from '@/lib/dbService'
 
 export const POST = async (req: Request) => {
   const body = await req.json()
   const { userId } = auth()
   if (!userId) {
-    return new NextResponse("Unauthorized", { status: 401 })
+    return new NextResponse('Unauthorized', { status: 401 })
   }
 
   const user = await currentUser()
-  console.log(user)
+
   // Perform your Route Handler's logic
   try {
     const { error } = await db.from('listings').insert({
@@ -23,12 +24,12 @@ export const POST = async (req: Request) => {
     })
     if (error) {
       console.error(error)
-      return new NextResponse("Server Error", { status: 500 })
+      return new NextResponse('Server Error', { status: 500 })
     }
 
-    return new NextResponse("OK")
+    return new NextResponse('OK')
   } catch (err) {
     console.error(err)
-    return new NextResponse("Server Error", { status: 500 })
+    return new NextResponse('Server Error', { status: 500 })
   }
 }
