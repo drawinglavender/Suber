@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -9,12 +11,18 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip'
 import { locationMap } from '@/components/CreateForm'
 import Listing from '@/types/listing'
-import { useEffect, useState } from 'react'
 
 const FeedCard = ({ listing }: { listing: Listing }) => {
   const [leavingIn, setLeavingIn] = useState<string>('')
+  const [rating, _setRating] = useState((Math.random() * 5).toFixed(1))
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,8 +34,7 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
 
       const seconds = Math.floor((diff / 1000) % 60)
 
-      if (hours > 0)
-      setLeavingIn(`${hours}h ${minutes}m`)
+      if (hours > 0) setLeavingIn(`${hours}h ${minutes}m`)
 
       setLeavingIn(`${minutes}m ${seconds}s`)
     }, 1000)
@@ -56,13 +63,22 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
                   </div>
                 </div>
                 <div>
-                  <Image
-                    className='rounded-xl'
-                    height={40}
-                    src={listing.userImage ?? ''}
-                    alt='profilepicture'
-                    width={40}
-                  ></Image>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Image
+                          className='rounded-xl'
+                          height={40}
+                          src={listing.userImage ?? ''}
+                          alt='profilepicture'
+                          width={40}
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{rating} / 5 average rating</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
 
               </div>
@@ -84,8 +100,20 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
           </CardContent>
 
           <CardFooter className='flex justify-between'>
-            <Button variant='outline'>Share</Button>
-            <Button>Reserve</Button>
+            <Button
+              variant='outline'
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  `https://suber.vercel.app/listing/${listing.id}`
+                )
+                toast('Link copied!')
+              }}
+            >
+              Share
+            </Button>
+            <Button onClick={() => toast.success('Reservation confirmed!')}>
+              Reserve
+            </Button>
           </CardFooter>
         </Card>
       </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -100,9 +101,10 @@ export default function CreateForm() {
   const [leaveTime, setLeaveTime] = useState('10')
   const [seats, setSeats] = useState(1)
   const [location, setLocation] = useState('')
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  const handleSubmit = () => {
-    fetch('/create/api', {
+  const handleSubmit = async () => {
+    const resp = await fetch('/create/api', {
       method: 'POST',
       body: JSON.stringify({
         leaveTime,
@@ -110,12 +112,22 @@ export default function CreateForm() {
         location
       })
     })
+
+    if (resp.ok) {
+      toast.success('Listing created!')
+    } else {
+      toast.error('Something went wrong')
+    }
+
+    setIsDialogOpen(false)
   }
 
   return (
-    <Dialog>
+    <Dialog open={isDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant='outline'>Create Listing</Button>
+        <Button variant='outline' onClick={() => setIsDialogOpen(true)}>
+          Create Listing
+        </Button>
       </DialogTrigger>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
