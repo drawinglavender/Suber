@@ -9,8 +9,8 @@ import {
 } from '@clerk/nextjs'
 
 import CreateForm from '@/components/CreateForm'
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+import { Label } from '@/components/ui/label'
+import { Switch } from '@/components/ui/switch'
 
 const Header = () => {
   const { userId } = useAuth()

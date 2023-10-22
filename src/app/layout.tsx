@@ -4,11 +4,13 @@ import { Inter as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 
 import './globals.css'
-import { Toaster } from 'sonner'
+
 import { ClerkProvider } from '@clerk/nextjs'
+import { Toaster } from 'sonner'
 
 import Header from '@/components/Header'
 import { ThemeProvider } from '@/components/theme-provider'
+
 export const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans'
@@ -32,13 +34,13 @@ export default function RootLayout({
           className={cn(
             'min-h-screen bg-background font-sans antialiased',
             fontSans.variable
-            )}
+          )}
         >
-            <Toaster />
+          <Toaster />
           <Header />
           {children}
         </body>
-        </html>
+      </html>
     </ClerkProvider>
   )
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { toast } from 'sonner'
+
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -10,6 +11,12 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip'
 import Listing from '@/types/listing'
 
 const FeedCard = ({ listing }: { listing: Listing }) => {
@@ -51,13 +58,23 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
                   </div>
                 </div>
                 <div>
-                  <Image
-                    className='rounded-xl'
-                    height={40}
-                    src={listing.userImage ?? ''}
-                    alt='profilepicture'
-                    width={40}
-                  ></Image>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Image
+                          className='rounded-xl'
+                          height={40}
+                          src={listing.userImage ?? ''}
+                          alt='profilepicture'
+                          width={40}
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        {/* Random number to 1 decimal place from 0 to 5 */}
+                        <p>{(Math.random() * 5).toFixed(1)}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
               </div>
             </CardTitle>
@@ -70,11 +87,20 @@ const FeedCard = ({ listing }: { listing: Listing }) => {
           </CardContent>
 
           <CardFooter className='flex justify-between'>
-            <Button variant='outline' onClick={() => {
-              navigator.clipboard.writeText(`https://suber.vercel.app/listing/${listing.id}`)
-              toast('Link copied!')
-            }}>Share</Button>
-            <Button onClick={() => toast.success('Reservation confirmed!')}>Reserve</Button>
+            <Button
+              variant='outline'
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  `https://suber.vercel.app/listing/${listing.id}`
+                )
+                toast('Link copied!')
+              }}
+            >
+              Share
+            </Button>
+            <Button onClick={() => toast.success('Reservation confirmed!')}>
+              Reserve
+            </Button>
           </CardFooter>
         </Card>
       </div>

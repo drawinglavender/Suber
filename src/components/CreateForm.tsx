@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -22,8 +23,6 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-
-import { toast } from 'sonner'
 
 const neighborhoods = [
   'Arbutus Ridge',
@@ -78,7 +77,9 @@ export default function CreateForm() {
   return (
     <Dialog open={isDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant='outline' onClick={() => setIsDialogOpen(true)}>Create Listing</Button>
+        <Button variant='outline' onClick={() => setIsDialogOpen(true)}>
+          Create Listing
+        </Button>
       </DialogTrigger>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
