@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useUser } from '@clerk/nextjs'
 
 import db from '@/lib/dbAnon'
 import FeedCard from '@/components/FeedCard'
@@ -28,14 +27,15 @@ const Page = () => {
 
     getAndSetListings()
 
-    db.channel('listings').on(
+    db.channel('listings-channel').on(
       'postgres_changes',
       { event: 'INSERT', schema: 'public', table: 'listings' },
       (payload) => {
+        console.log(payload.new)
         // @ts-ignore
         setListings((listings) => [payload.new, ...listings])
       }
-    )
+    ).subscribe()
   }, [])
 
   if (listings.length === 0 && !loading) {

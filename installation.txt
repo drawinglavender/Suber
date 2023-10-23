@@ -1,0 +1,9 @@
+1. Install NodeJS LTS
+
+2. Open terminal inside folder
+
+3. Install dependencies with "npm i"
+
+4. Start the server with "npm run dev"
+
+5. Visit "localhost:3000"
