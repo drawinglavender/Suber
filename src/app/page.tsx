@@ -26,7 +26,7 @@ const Page = () => {
     }
 
     getAndSetListings()
-
+    // Hi
     db.channel('listings-channel').on(
       'postgres_changes',
       { event: 'INSERT', schema: 'public', table: 'listings' },
